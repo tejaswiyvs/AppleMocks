@@ -8,6 +8,13 @@
 
 import UIKit
 
-class Customer: NSObject {
-   var 
+class Customer {
+    var customerId: String?
+    var companyName: String?
+    var contactName: String?
+    var contactTitle: String?
+    
+    init() {
+        
+    }
 }

@@ -9,12 +9,18 @@
 /* Begin PBXBuildFile section */
 		0227B7DC4A1A7C7737BB0330 /* libPods-AppleMocks.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B42C41C2BD5A2F2C1973D147 /* libPods-AppleMocks.a */; };
 		B73DCF1A1B56FF9900D23698 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B73DCF191B56FF9900D23698 /* AppDelegate.swift */; };
-		B73DCF1C1B56FF9900D23698 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B73DCF1B1B56FF9900D23698 /* ViewController.swift */; };
 		B73DCF211B56FF9900D23698 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B73DCF201B56FF9900D23698 /* Images.xcassets */; };
 		B73DCF241B56FF9900D23698 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = B73DCF221B56FF9900D23698 /* LaunchScreen.xib */; };
 		B73DCF301B56FF9900D23698 /* AppleMocksTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B73DCF2F1B56FF9900D23698 /* AppleMocksTests.swift */; };
 		B73DCF3D1B57004200D23698 /* Customer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B73DCF3C1B57004200D23698 /* Customer.swift */; };
 		B73DCF3E1B57004200D23698 /* Customer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B73DCF3C1B57004200D23698 /* Customer.swift */; };
+		B73DCF451B57017100D23698 /* DashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B73DCF441B57017100D23698 /* DashboardViewController.swift */; };
+		B73DCF4A1B5701F300D23698 /* DashboardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B73DCF491B5701F300D23698 /* DashboardView.xib */; };
+		B73DCF4C1B57027000D23698 /* Address.swift in Sources */ = {isa = PBXBuildFile; fileRef = B73DCF4B1B57027000D23698 /* Address.swift */; };
+		B73DCF4E1B57036400D23698 /* AddCustomerRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B73DCF4D1B57036400D23698 /* AddCustomerRequest.swift */; };
+		B73DCF4F1B57036400D23698 /* AddCustomerRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B73DCF4D1B57036400D23698 /* AddCustomerRequest.swift */; };
+		B73DCF511B57067C00D23698 /* BaseRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B73DCF501B57067C00D23698 /* BaseRequest.swift */; };
+		B73DCF521B57067C00D23698 /* BaseRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B73DCF501B57067C00D23698 /* BaseRequest.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -33,13 +39,18 @@
 		B73DCF141B56FF9900D23698 /* AppleMocks.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AppleMocks.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B73DCF181B56FF9900D23698 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B73DCF191B56FF9900D23698 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		B73DCF1B1B56FF9900D23698 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		B73DCF201B56FF9900D23698 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		B73DCF231B56FF9900D23698 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		B73DCF291B56FF9900D23698 /* AppleMocksTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AppleMocksTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B73DCF2E1B56FF9900D23698 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B73DCF2F1B56FF9900D23698 /* AppleMocksTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleMocksTests.swift; sourceTree = "<group>"; };
 		B73DCF3C1B57004200D23698 /* Customer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Customer.swift; path = Models/Customer.swift; sourceTree = "<group>"; };
+		B73DCF441B57017100D23698 /* DashboardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DashboardViewController.swift; path = Controllers/DashboardViewController.swift; sourceTree = "<group>"; };
+		B73DCF491B5701F300D23698 /* DashboardView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = DashboardView.xib; path = Views/DashboardView.xib; sourceTree = "<group>"; };
+		B73DCF4B1B57027000D23698 /* Address.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Address.swift; path = Models/Address.swift; sourceTree = "<group>"; };
+		B73DCF4D1B57036400D23698 /* AddCustomerRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AddCustomerRequest.swift; path = Lib/Networking/AddCustomerRequest.swift; sourceTree = "<group>"; };
+		B73DCF501B57067C00D23698 /* BaseRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BaseRequest.swift; path = Lib/Networking/BaseRequest.swift; sourceTree = "<group>"; };
+		B73DCF541B5708C200D23698 /* AppleMocks-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "AppleMocks-Bridging-Header.h"; sourceTree = SOURCE_ROOT; };
 		E140D4BF528EE5A005FC9E2F /* Pods-AppleMocks.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AppleMocks.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AppleMocks/Pods-AppleMocks.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -96,6 +107,7 @@
 				B73DCF3B1B57002000D23698 /* Lib */,
 				B73DCF3A1B57001500D23698 /* Models */,
 				B73DCF391B57000B00D23698 /* Controllers */,
+				B73DCF481B5701D300D23698 /* Views */,
 				B73DCF191B56FF9900D23698 /* AppDelegate.swift */,
 				B73DCF201B56FF9900D23698 /* Images.xcassets */,
 				B73DCF221B56FF9900D23698 /* LaunchScreen.xib */,
@@ -108,6 +120,7 @@
 			isa = PBXGroup;
 			children = (
 				B73DCF181B56FF9900D23698 /* Info.plist */,
+				B73DCF541B5708C200D23698 /* AppleMocks-Bridging-Header.h */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -132,7 +145,7 @@
 		B73DCF391B57000B00D23698 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				B73DCF1B1B56FF9900D23698 /* ViewController.swift */,
+				B73DCF441B57017100D23698 /* DashboardViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -141,6 +154,7 @@
 			isa = PBXGroup;
 			children = (
 				B73DCF3C1B57004200D23698 /* Customer.swift */,
+				B73DCF4B1B57027000D23698 /* Address.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -172,8 +186,18 @@
 		B73DCF411B57007700D23698 /* Networking */ = {
 			isa = PBXGroup;
 			children = (
+				B73DCF4D1B57036400D23698 /* AddCustomerRequest.swift */,
+				B73DCF501B57067C00D23698 /* BaseRequest.swift */,
 			);
 			name = Networking;
+			sourceTree = "<group>";
+		};
+		B73DCF481B5701D300D23698 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				B73DCF491B5701F300D23698 /* DashboardView.xib */,
+			);
+			name = Views;
 			sourceTree = "<group>";
 		};
 		DBF1B80E9AE5C1F346D17C95 /* Pods */ = {
@@ -269,6 +293,7 @@
 			files = (
 				B73DCF241B56FF9900D23698 /* LaunchScreen.xib in Resources */,
 				B73DCF211B56FF9900D23698 /* Images.xcassets in Resources */,
+				B73DCF4A1B5701F300D23698 /* DashboardView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -320,7 +345,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				B73DCF3D1B57004200D23698 /* Customer.swift in Sources */,
-				B73DCF1C1B56FF9900D23698 /* ViewController.swift in Sources */,
+				B73DCF451B57017100D23698 /* DashboardViewController.swift in Sources */,
+				B73DCF511B57067C00D23698 /* BaseRequest.swift in Sources */,
+				B73DCF4E1B57036400D23698 /* AddCustomerRequest.swift in Sources */,
+				B73DCF4C1B57027000D23698 /* Address.swift in Sources */,
 				B73DCF1A1B56FF9900D23698 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -329,6 +357,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B73DCF521B57067C00D23698 /* BaseRequest.swift in Sources */,
+				B73DCF4F1B57036400D23698 /* AddCustomerRequest.swift in Sources */,
 				B73DCF301B56FF9900D23698 /* AppleMocksTests.swift in Sources */,
 				B73DCF3E1B57004200D23698 /* Customer.swift in Sources */,
 			);
@@ -447,6 +477,7 @@
 				INFOPLIST_FILE = AppleMocks/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "AppleMocks-Bridging-Header.h";
 			};
 			name = Debug;
 		};
@@ -458,6 +489,7 @@
 				INFOPLIST_FILE = AppleMocks/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "AppleMocks-Bridging-Header.h";
 			};
 			name = Release;
 		};

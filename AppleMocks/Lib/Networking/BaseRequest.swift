@@ -11,8 +11,8 @@ import Foundation
 class BaseRequest {
     let baseUrl = NSURL(string: "http://1860-6169.el-alt.com/odata")
     
-    typealias SuccessBlock = ([AnyObject]?) -> (Void)
-    typealias FailureBlock = (Int, String) -> (Void)
+    typealias SuccessBlock = (AnyObject?) -> (Void)
+    typealias FailureBlock = (Int) -> (Void)
     
     var successBlock: SuccessBlock?
     var failureBlock: FailureBlock?
@@ -27,9 +27,38 @@ class BaseRequest {
     }
     
     func start() {
-        var body = self.body()
-        var headers = self.headers()
-        var url = (relativeUrl() != nil) ? self.absoluteUrl(relativeUrl()!) : baseUrl!;
+        var urlRequest = NSMutableURLRequest(URL: url())
+        self.addHeaders(self.headers(), request: urlRequest)
+        urlRequest.HTTPBody = self.body()?.dataUsingEncoding(NSUTF8StringEncoding)
+        var operation = AFHTTPRequestOperation(request: urlRequest)
+        operation.setCompletionBlockWithSuccess({ [unowned self] (operation, responseData) -> Void in
+            self.parseResponse(responseData as? NSData)
+        }, failure: { (op, error) -> Void in
+            self.messageFailure(error.code)
+        })
+        operation.start()
+    }
+    
+    func parseResponse(var response:NSData?) {
+        if let s = self.successBlock {
+            s(response)
+        }
+    }
+    
+    func messageFailure(var code: Int) {
+        if let f = self.failureBlock {
+            f(code)
+        }
+    }
+    
+    func addHeaders(headers: Dictionary<String, String>, request: NSMutableURLRequest) {
+        for (key, value) in headers {
+            request.setValue(value, forHTTPHeaderField: key)
+        }
+    }
+    
+    func url() -> NSURL {
+        return (relativeUrl() != nil) ? self.absoluteUrl(relativeUrl()!) : baseUrl!
     }
     
     func relativeUrl() -> String? {

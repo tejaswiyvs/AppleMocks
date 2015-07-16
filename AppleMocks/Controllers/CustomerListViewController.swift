@@ -76,11 +76,13 @@ class CustomerListViewController: UITableViewController {
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if (editingStyle == UITableViewCellEditingStyle.Delete) {
             let customer = self.customerList![indexPath.row]
+            self.customerList?.removeAtIndex(indexPath.row)
             SVProgressHUD.showWithStatus("Deleting...")
-            self.deleteCustomersRequest = DeleteCustomerRequest(customer: customer, success: { [unowned self](result) -> (Void) in
-                self.customerList?.removeAtIndex(indexPath.row)
-                tableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Fade)
-            }, failure: { (errorCode) -> (Void) in
+            self.deleteCustomersRequest = DeleteCustomerRequest(customer: customer, success: { (result) -> (Void) in
+                SVProgressHUD.dismiss()
+            }, failure: { [unowned self] (errorCode) -> (Void) in
+                self.customerList?.insert(customer, atIndex: indexPath.row)
+                tableView.reloadData()
                 SVProgressHUD.showErrorWithStatus("There was a problem deleting your record. Please try again")
             })
             self.deleteCustomersRequest?.start()

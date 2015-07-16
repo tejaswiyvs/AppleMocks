@@ -15,16 +15,17 @@ class CustomerListViewController: UITableViewController {
     var customerList: [Customer]?
     var spinner = SVProgressHUD()
     var getCustomersRequest: GetCustomersRequest?
+    var deleteCustomersRequest: DeleteCustomerRequest?
     
     init() {
         super.init(style: UITableViewStyle.Grouped)
     }
     
-    override init!(nibName nibNameOrNil: String!, bundle nibBundleOrNil: NSBundle!) {
+    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: NSBundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
     }
     
-    required init(coder: NSCoder) {
+    required init?(coder: NSCoder) {
         super.init(coder: coder)
     }
     
@@ -48,17 +49,17 @@ class CustomerListViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        var customer = self.customerList![indexPath.row]
+        let customer = self.customerList![indexPath.row]
         self.pushCustomerInfoScreen(customer)
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        var tableViewCell:UITableViewCell? = tableView.dequeueReusableCellWithIdentifier(cellReuseId) as? UITableViewCell
+        var tableViewCell:UITableViewCell? = tableView.dequeueReusableCellWithIdentifier(cellReuseId) as UITableViewCell?
         if tableViewCell == nil {
             tableViewCell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: cellReuseId)
         }
         
-        var model = self.customerList![indexPath.row]
+        let model = self.customerList![indexPath.row]
         tableViewCell!.accessoryType = UITableViewCellAccessoryType.DisclosureIndicator
         if let pictureName = model.profilePictureName {
             tableViewCell!.imageView?.image = UIImage(named: pictureName)
@@ -68,6 +69,24 @@ class CustomerListViewController: UITableViewController {
         return tableViewCell!
     }
     
+    override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+        return true;
+    }
+    
+    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        if (editingStyle == UITableViewCellEditingStyle.Delete) {
+            let customer = self.customerList![indexPath.row]
+            SVProgressHUD.showWithStatus("Deleting...")
+            self.deleteCustomersRequest = DeleteCustomerRequest(customer: customer, success: { [unowned self](result) -> (Void) in
+                self.customerList?.removeAtIndex(indexPath.row)
+                tableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Fade)
+            }, failure: { (errorCode) -> (Void) in
+                SVProgressHUD.showErrorWithStatus("There was a problem deleting your record. Please try again")
+            })
+            self.deleteCustomersRequest?.start()
+        }
+    }
+    
     /* Event Handlers */
     func addButtonClicked(sender: UIButton) {
         self.pushCustomerInfoScreen(nil)
@@ -75,14 +94,14 @@ class CustomerListViewController: UITableViewController {
     
     /* Helpers */
     func pushCustomerInfoScreen(customer: Customer?) {
-        var customerInfo = CustomerViewController(customer: customer)
+        let customerInfo = CustomerViewController(customer: customer)
         self.navigationController?.pushViewController(customerInfo, animated: true)
     }
     
     func fetchData() {
         SVProgressHUD.showWithStatus("Loading...")
         
-        var success: BaseRequest.SuccessBlock = { [unowned self] (result: AnyObject?) -> (Void) in
+        let success: BaseRequest.SuccessBlock = { [unowned self] (result: AnyObject?) -> (Void) in
             if let r:AnyObject = result {
                 self.customerList = r as? [Customer]
             }
@@ -90,7 +109,7 @@ class CustomerListViewController: UITableViewController {
             self.tableView.reloadData()
         }
         
-        var failure: BaseRequest.FailureBlock = { (Int) -> (Void) in
+        let failure: BaseRequest.FailureBlock = { (Int) -> (Void) in
             SVProgressHUD.showErrorWithStatus("There was a problem while fetching your data. Please try again.")
         }
         

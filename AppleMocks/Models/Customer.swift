@@ -25,13 +25,4 @@ class Customer {
         self.contactTitle = json["ContactTitle"].stringValue
         self.contactName = json["ContactName"].stringValue
     }
-    
-    func toDict() -> Dictionary<String, String> {
-        var dict = Dictionary<String, String>()
-        dict["CustomerID"] = self.customerId
-        dict["CompanyName"] = self.companyName
-        dict["ContactName"] = self.contactName
-        dict["ContactTitle"] = self.contactTitle
-        return dict
-    }
 }

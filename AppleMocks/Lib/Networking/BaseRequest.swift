@@ -27,10 +27,10 @@ class BaseRequest {
     }
     
     func start() {
-        var urlRequest = NSMutableURLRequest(URL: url())
+        let urlRequest = NSMutableURLRequest(URL: url())
         self.addHeaders(self.headers(), request: urlRequest)
         urlRequest.HTTPBody = self.body()?.dataUsingEncoding(NSUTF8StringEncoding)
-        var operation = AFHTTPRequestOperation(request: urlRequest)
+        let operation = AFHTTPRequestOperation(request: urlRequest)
         operation.setCompletionBlockWithSuccess({ [unowned self] (operation, responseData) -> Void in
             self.parseResponse(responseData as? NSData)
         }, failure: { (op, error) -> Void in
@@ -39,13 +39,13 @@ class BaseRequest {
         operation.start()
     }
     
-    func parseResponse(var response:NSData?) {
+    func parseResponse(response:NSData?) {
         if let s = self.successBlock {
             s(response)
         }
     }
     
-    func messageFailure(var code: Int) {
+    func messageFailure(code: Int) {
         if let f = self.failureBlock {
             f(code)
         }

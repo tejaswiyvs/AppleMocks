@@ -56,6 +56,14 @@ class DeleteCustomerRequest : BaseRequest {
 }
 
 class UpdateCustomerRequest : BaseRequest {
+    
+    var customer: Customer
+    
+    init(customer: Customer, success: SuccessBlock?, failure: FailureBlock?) {
+        self.customer = customer
+        super.init(success: success, failure: failure)
+    }
+    
     override func relativeUrl() -> String? {
         return "Customers";
     }
@@ -84,11 +92,16 @@ class GetCustomersRequest : BaseRequest {
     
     override func parseResponse(responseData: NSData?) {
         if let d = responseData {
-            let jsonObject: AnyObject! = NSJSONSerialization.JSONObjectWithData(d, options: nil, error: nil)
+            let jsonObject: AnyObject!
+            do {
+                jsonObject = try NSJSONSerialization.JSONObjectWithData(d, options: [])
+            } catch _ {
+                jsonObject = nil
+            }
             var json = JSON(jsonObject)
 
             var customers: [Customer] = [Customer]()
-            for (key, subJson) in json["value"] {
+            for (_, subJson) in json["value"] {
                 let customer = Customer(json: subJson)
                 customers.append(customer)
             }

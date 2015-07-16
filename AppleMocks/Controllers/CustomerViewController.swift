@@ -19,7 +19,7 @@ class CustomerViewController: UIViewController {
         super.init(nibName: "CustomerView", bundle: NSBundle.mainBundle())
     }
     
-    required init(coder aDecoder: NSCoder) {
+    required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
 

@@ -80,6 +80,7 @@ class CustomerListViewController: UITableViewController {
             SVProgressHUD.showWithStatus("Deleting...")
             self.deleteCustomersRequest = DeleteCustomerRequest(customer: customer, success: { (result) -> (Void) in
                 SVProgressHUD.dismiss()
+                tableView.reloadData()
             }, failure: { [unowned self] (errorCode) -> (Void) in
                 self.customerList?.insert(customer, atIndex: indexPath.row)
                 tableView.reloadData()

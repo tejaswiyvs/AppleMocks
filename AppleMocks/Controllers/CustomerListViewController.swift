@@ -30,15 +30,25 @@ class CustomerListViewController: UITableViewController {
     }
     
     override func viewDidLoad() {
-        self.fetchData()
-        self.title = "Customers"
+        super.viewDidLoad()
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Add, target: self, action: Selector("addButtonClicked:"))
+        self.title = "Customers"
+        self.tableView.tableHeaderView = UIView(frame: CGRectMake(0.0, 0.0, tableView.bounds.size.width, 0.0))
+        self.configurePullToRefresh()
     }
     
-    /* UITableViewDelegate */
-    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        self.triggerRefreshControl()
+        self.fetchData(nil)
+    }
+        
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
+    }
+    
+    override func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 0.0
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -77,14 +87,11 @@ class CustomerListViewController: UITableViewController {
         if (editingStyle == UITableViewCellEditingStyle.Delete) {
             let customer = self.customerList![indexPath.row]
             self.customerList?.removeAtIndex(indexPath.row)
-            SVProgressHUD.showWithStatus("Deleting...")
             self.deleteCustomersRequest = DeleteCustomerRequest(customer: customer, success: { (result) -> (Void) in
-                SVProgressHUD.dismiss()
                 tableView.reloadData()
             }, failure: { [unowned self] (errorCode) -> (Void) in
                 self.customerList?.insert(customer, atIndex: indexPath.row)
                 tableView.reloadData()
-                SVProgressHUD.showErrorWithStatus("There was a problem deleting your record. Please try again")
             })
             self.deleteCustomersRequest?.start()
         }
@@ -96,29 +103,49 @@ class CustomerListViewController: UITableViewController {
     }
     
     /* Helpers */
+    func triggerRefreshControl() {
+        self.refreshControl?.beginRefreshing()
+        if self.tableView.contentOffset.y == 0 {
+            UIView.animateWithDuration(0.25,
+                delay: 0,
+                options:UIViewAnimationOptions.BeginFromCurrentState,
+                animations: { [unowned self]() -> Void in
+                    self.tableView.contentOffset = CGPointMake(0, -self.refreshControl!.frame.size.height);
+                },
+                completion:nil)
+        }
+    }
+    
+    func dismissRefreshControl() {
+        self.refreshControl?.endRefreshing()
+    }
+    
+    func configurePullToRefresh() {
+        self.refreshControl = UIRefreshControl()
+        self.refreshControl?.addTarget(self, action: "fetchData:", forControlEvents: UIControlEvents.ValueChanged)
+    }
+        
     func pushCustomerInfoScreen(customer: Customer?) {
         let customerInfo = CustomerViewController(customer: customer)
         self.navigationController?.pushViewController(customerInfo, animated: true)
     }
     
-    func fetchData() {
-        SVProgressHUD.showWithStatus("Loading...")
-        
+    func fetchData(sender: AnyObject?) {
         let success: BaseRequest.SuccessBlock = { [unowned self] (result: AnyObject?) -> (Void) in
             if let r:AnyObject = result {
                 self.customerList = r as? [Customer]
             }
-            SVProgressHUD.showSuccessWithStatus("Done")
             self.tableView.reloadData()
+            self.dismissRefreshControl()
         }
         
         let failure: BaseRequest.FailureBlock = { (Int) -> (Void) in
-            SVProgressHUD.showErrorWithStatus("There was a problem while fetching your data. Please try again.")
+            self.refreshControl?.endRefreshing()
+            self.dismissRefreshControl()
         }
         
         self.getCustomersRequest = GetCustomersRequest(success: success, failure: failure);
         self.getCustomersRequest!.start()
-        self.tableView.reloadData()
     }
     
 }

@@ -27,7 +27,7 @@ class Customer {
     }
     
     func toJSON() -> NSDictionary {
-        var dictionary = NSMutableDictionary()
+        let dictionary = NSMutableDictionary()
         if self.customerId != nil {
             dictionary["CustomerID"] = self.customerId
         }

@@ -21,10 +21,9 @@ class AddCustomerRequest : BaseRequest {
         return "Customers";
     }
     
-    override func body() throws -> String? {
-        let jsonData = try NSJSONSerialization.dataWithJSONObject(self.customer.toJSON(), options: NSJSONWritingOptions.PrettyPrinted)
-        var json: JSON = JSON(jsonData)
-        return json.stringValue
+    override func body() throws -> NSData? {
+        let json: JSON = JSON(self.customer.toJSON())
+        return try json.rawData()
     }
     
     override func method() -> String {
@@ -48,7 +47,7 @@ class DeleteCustomerRequest : BaseRequest {
         return "Customers('" + self.customer.customerId! + "')";
     }
     
-    override func body() -> String? {
+    override func body() -> NSData? {
         return nil;
     }
     
@@ -67,13 +66,15 @@ class UpdateCustomerRequest : BaseRequest {
     }
     
     override func relativeUrl() -> String? {
-        return "Customers";
+        if self.customer.customerId == nil || self.customer.customerId!.isEmpty {
+            return "Customers";
+        }
+        return "Customers('" + self.customer.customerId! + "')";
     }
     
-    override func body() throws -> String? {
-        let jsonData = try NSJSONSerialization.dataWithJSONObject(self.customer.toJSON(), options: NSJSONWritingOptions.PrettyPrinted)
-        var json = JSON(jsonData)
-        return json.stringValue
+    override func body() throws -> NSData? {
+        let json: JSON = JSON(self.customer.toJSON())
+        return try json.rawData()
     }
     
     override func method() -> String {
@@ -86,7 +87,7 @@ class GetCustomersRequest : BaseRequest {
         return "Customers";
     }
     
-    override func body() -> String? {
+    override func body() -> NSData? {
         return nil;
     }
         

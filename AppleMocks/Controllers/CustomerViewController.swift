@@ -46,6 +46,7 @@ class CustomerViewController: UIViewController {
         }
         else {
             self.customer?.contactName = self.customerNameTxtField?.text
+            self.updateCustomer(self.customer!)
         }
     }
     

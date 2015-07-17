@@ -21,7 +21,7 @@ class DashboardViewController: UIViewController, UIPopoverControllerDelegate {
         let navigationBar = UINavigationController(rootViewController: contentViewController)
         self.popoverController = UIPopoverController(contentViewController: navigationBar)
         self.popoverController?.popoverContentSize = CGSizeMake(320.0, 480.0)
-        [self.popoverController?.presentPopoverFromRect(sender.frame, inView: self.view, permittedArrowDirections: ([UIPopoverArrowDirection.Up, UIPopoverArrowDirection.Down]), animated: true)]
+        [self.popoverController?.presentPopoverFromRect(sender.frame, inView: self.view, permittedArrowDirections: UIPopoverArrowDirection.Any, animated: true)]
     }
  
     func popoverControllerShouldDismissPopover(popoverController: UIPopoverController) -> Bool {

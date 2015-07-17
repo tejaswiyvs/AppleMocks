@@ -31,7 +31,8 @@ class BaseRequest {
         do {
             let urlRequest = NSMutableURLRequest(URL: url())
             self.addHeaders(self.headers(), request: urlRequest)
-            urlRequest.HTTPBody = try self.body()?.dataUsingEncoding(NSUTF8StringEncoding)
+            urlRequest.HTTPBody = try self.body()
+            urlRequest.HTTPMethod = self.method()
             let operation = AFHTTPRequestOperation(request: urlRequest)
             operation.setCompletionBlockWithSuccess({ [unowned self] (operation, responseData) -> Void in
                 self.parseResponse(responseData as? NSData)
@@ -72,7 +73,7 @@ class BaseRequest {
         return nil;
     }
     
-    func body() throws -> String? {
+    func body() throws -> NSData? {
         return nil;
     }
     

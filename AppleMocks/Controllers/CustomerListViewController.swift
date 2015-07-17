@@ -18,7 +18,7 @@ class CustomerListViewController: UITableViewController {
     var deleteCustomersRequest: DeleteCustomerRequest?
     
     init() {
-        super.init(style: UITableViewStyle.Grouped)
+        super.init(style: UITableViewStyle.Plain)
     }
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: NSBundle?) {
@@ -33,7 +33,7 @@ class CustomerListViewController: UITableViewController {
         super.viewDidLoad()
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Add, target: self, action: Selector("addButtonClicked:"))
         self.title = "Customers"
-        self.tableView.tableHeaderView = UIView(frame: CGRectMake(0.0, 0.0, tableView.bounds.size.width, 0.0))
+        self.tableView.contentInset = UIEdgeInsetsZero
         self.configurePullToRefresh()
     }
     
@@ -45,10 +45,6 @@ class CustomerListViewController: UITableViewController {
         
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
-    }
-    
-    override func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 0.0
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -122,7 +118,7 @@ class CustomerListViewController: UITableViewController {
     
     func configurePullToRefresh() {
         self.refreshControl = UIRefreshControl()
-        self.refreshControl?.addTarget(self, action: "fetchData:", forControlEvents: UIControlEvents.ValueChanged)
+        self.refreshControl?.addTarget(self, action: Selector("fetchData:"), forControlEvents: UIControlEvents.ValueChanged)
     }
         
     func pushCustomerInfoScreen(customer: Customer?) {

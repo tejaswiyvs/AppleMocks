@@ -10,6 +10,7 @@ import Foundation
 
 class BaseRequest {
     let baseUrl = NSURL(string: "http://1860-6169.el-alt.com/odata")
+    let appErrorCode: Int = -1
     
     typealias SuccessBlock = (AnyObject?) -> (Void)
     typealias FailureBlock = (Int) -> (Void)
@@ -27,16 +28,22 @@ class BaseRequest {
     }
     
     func start() {
-        let urlRequest = NSMutableURLRequest(URL: url())
-        self.addHeaders(self.headers(), request: urlRequest)
-        urlRequest.HTTPBody = self.body()?.dataUsingEncoding(NSUTF8StringEncoding)
-        let operation = AFHTTPRequestOperation(request: urlRequest)
-        operation.setCompletionBlockWithSuccess({ [unowned self] (operation, responseData) -> Void in
-            self.parseResponse(responseData as? NSData)
-        }, failure: { (op, error) -> Void in
-            self.messageFailure(error.code)
-        })
-        operation.start()
+        do {
+            let urlRequest = NSMutableURLRequest(URL: url())
+            self.addHeaders(self.headers(), request: urlRequest)
+            urlRequest.HTTPBody = try self.body()?.dataUsingEncoding(NSUTF8StringEncoding)
+            let operation = AFHTTPRequestOperation(request: urlRequest)
+            operation.setCompletionBlockWithSuccess({ [unowned self] (operation, responseData) -> Void in
+                self.parseResponse(responseData as? NSData)
+            }, failure: { (op, error) -> Void in
+                self.messageFailure(error.code)
+            })
+            operation.start()
+        }
+        catch {
+            print(error)
+            self.messageFailure(appErrorCode)
+        }
     }
     
     func parseResponse(response:NSData?) {
@@ -65,7 +72,7 @@ class BaseRequest {
         return nil;
     }
     
-    func body() -> String? {
+    func body() throws -> String? {
         return nil;
     }
     

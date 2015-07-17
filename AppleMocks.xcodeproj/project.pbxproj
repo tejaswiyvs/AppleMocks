@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B705E21E1B594ABB00037943 /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B705E21D1B594ABB00037943 /* Helper.swift */; };
+		B705E21F1B594ABB00037943 /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B705E21D1B594ABB00037943 /* Helper.swift */; };
+		B705E2241B594BA800037943 /* error@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B705E2211B594BA800037943 /* error@2x.png */; };
+		B705E2251B594BA800037943 /* error@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B705E2211B594BA800037943 /* error@2x.png */; };
+		B705E2261B594BA800037943 /* TextFieldValidator.m in Sources */ = {isa = PBXBuildFile; fileRef = B705E2231B594BA800037943 /* TextFieldValidator.m */; };
+		B705E2271B594BA800037943 /* TextFieldValidator.m in Sources */ = {isa = PBXBuildFile; fileRef = B705E2231B594BA800037943 /* TextFieldValidator.m */; };
 		B73DCF1A1B56FF9900D23698 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B73DCF191B56FF9900D23698 /* AppDelegate.swift */; };
 		B73DCF211B56FF9900D23698 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B73DCF201B56FF9900D23698 /* Images.xcassets */; };
 		B73DCF241B56FF9900D23698 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = B73DCF221B56FF9900D23698 /* LaunchScreen.xib */; };
@@ -65,6 +71,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		B705E21D1B594ABB00037943 /* Helper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Helper.swift; path = Lib/Helper/Helper.swift; sourceTree = "<group>"; };
+		B705E2211B594BA800037943 /* error@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "error@2x.png"; path = "Lib/UI/TextFieldValidator/TextFieldValidator/error@2x.png"; sourceTree = "<group>"; };
+		B705E2221B594BA800037943 /* TextFieldValidator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TextFieldValidator.h; path = Lib/UI/TextFieldValidator/TextFieldValidator/TextFieldValidator.h; sourceTree = "<group>"; };
+		B705E2231B594BA800037943 /* TextFieldValidator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TextFieldValidator.m; path = Lib/UI/TextFieldValidator/TextFieldValidator/TextFieldValidator.m; sourceTree = "<group>"; };
 		B73DCF141B56FF9900D23698 /* AppleMocks.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AppleMocks.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B73DCF181B56FF9900D23698 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B73DCF191B56FF9900D23698 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -132,6 +142,16 @@
 			children = (
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		B705E2201B594BA100037943 /* TextFieldValidator */ = {
+			isa = PBXGroup;
+			children = (
+				B705E2211B594BA800037943 /* error@2x.png */,
+				B705E2221B594BA800037943 /* TextFieldValidator.h */,
+				B705E2231B594BA800037943 /* TextFieldValidator.m */,
+			);
+			name = TextFieldValidator;
 			sourceTree = "<group>";
 		};
 		B73DCF0B1B56FF9900D23698 = {
@@ -225,6 +245,7 @@
 		B73DCF401B57007300D23698 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				B705E21D1B594ABB00037943 /* Helper.swift */,
 			);
 			name = Helpers;
 			sourceTree = "<group>";
@@ -278,6 +299,7 @@
 		B78A10BE1B580C11002BF90C /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				B705E2201B594BA100037943 /* TextFieldValidator */,
 				B78A10BF1B580C33002BF90C /* SVProgressHUD */,
 			);
 			name = UI;
@@ -388,6 +410,7 @@
 				B73DCF241B56FF9900D23698 /* LaunchScreen.xib in Resources */,
 				B73DCF211B56FF9900D23698 /* Images.xcassets in Resources */,
 				B73DCF4A1B5701F300D23698 /* DashboardView.xib in Resources */,
+				B705E2241B594BA800037943 /* error@2x.png in Resources */,
 				B78A10C71B580C46002BF90C /* SVProgressHUD.bundle in Resources */,
 				B78A10D81B583210002BF90C /* CustomerView.xib in Resources */,
 			);
@@ -397,6 +420,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B705E2251B594BA800037943 /* error@2x.png in Resources */,
 				B78A10D91B583210002BF90C /* CustomerView.xib in Resources */,
 				B78A10C81B580C46002BF90C /* SVProgressHUD.bundle in Resources */,
 			);
@@ -416,6 +440,7 @@
 				B73DCF511B57067C00D23698 /* BaseRequest.swift in Sources */,
 				B78A10C91B580C46002BF90C /* SVProgressHUD.m in Sources */,
 				B78A10A21B57FF5C002BF90C /* AFURLConnectionOperation.m in Sources */,
+				B705E21E1B594ABB00037943 /* Helper.swift in Sources */,
 				B78A10DC1B583A4A002BF90C /* SwiftyJSON.swift in Sources */,
 				B78A109F1B57FF5C002BF90C /* AFHTTPSessionManager.m in Sources */,
 				B78A10BC1B5808E4002BF90C /* CustomerListViewController.swift in Sources */,
@@ -424,6 +449,7 @@
 				B73DCF1A1B56FF9900D23698 /* AppDelegate.swift in Sources */,
 				B78A10D31B5831FB002BF90C /* CustomerViewController.swift in Sources */,
 				B78A10C51B580C46002BF90C /* SVIndefiniteAnimatedView.m in Sources */,
+				B705E2261B594BA800037943 /* TextFieldValidator.m in Sources */,
 				B78A109E1B57FF5C002BF90C /* AFHTTPRequestOperationManager.m in Sources */,
 				B78A10A11B57FF5C002BF90C /* AFSecurityPolicy.m in Sources */,
 				B78A10A41B57FF5C002BF90C /* AFURLResponseSerialization.m in Sources */,
@@ -442,6 +468,7 @@
 				B78A10AE1B58014F002BF90C /* AFNetworkReachabilityManager.m in Sources */,
 				B78A10CA1B580C46002BF90C /* SVProgressHUD.m in Sources */,
 				B78A10B01B58014F002BF90C /* AFSecurityPolicy.m in Sources */,
+				B705E21F1B594ABB00037943 /* Helper.swift in Sources */,
 				B78A10DD1B583A4A002BF90C /* SwiftyJSON.swift in Sources */,
 				B78A10B21B58014F002BF90C /* AFURLConnectionOperation.m in Sources */,
 				B78A10B41B58014F002BF90C /* AFURLRequestSerialization.m in Sources */,
@@ -450,6 +477,7 @@
 				B78A10BA1B58014F002BF90C /* DashboardViewController.swift in Sources */,
 				B78A10D41B5831FB002BF90C /* CustomerViewController.swift in Sources */,
 				B78A10C61B580C46002BF90C /* SVIndefiniteAnimatedView.m in Sources */,
+				B705E2271B594BA800037943 /* TextFieldValidator.m in Sources */,
 				B73DCF521B57067C00D23698 /* BaseRequest.swift in Sources */,
 				B73DCF4F1B57036400D23698 /* CustomerRequests.swift in Sources */,
 				B73DCF301B56FF9900D23698 /* AppleMocksTests.swift in Sources */,

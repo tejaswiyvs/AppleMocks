@@ -5,3 +5,4 @@
 
 #import "AFNetworking.h"
 #import "SVProgressHUD.h"
+#import "TextFieldValidator.h"

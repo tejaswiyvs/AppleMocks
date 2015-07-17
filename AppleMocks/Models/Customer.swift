@@ -25,4 +25,21 @@ class Customer {
         self.contactTitle = json["ContactTitle"].stringValue
         self.contactName = json["ContactName"].stringValue
     }
+    
+    func toJSON() -> NSDictionary {
+        var dictionary = NSMutableDictionary()
+        if self.customerId != nil {
+            dictionary["CustomerID"] = self.customerId
+        }
+        if self.companyName != nil {
+            dictionary["CompanyName"] = self.companyName
+        }
+        if self.contactTitle != nil {
+            dictionary["ContactTitle"] = self.contactTitle
+        }
+        if self.contactName != nil {
+            dictionary["ContactName"] = self.contactName
+        }
+        return dictionary
+    }
 }

@@ -4,15 +4,17 @@
 
   },
   "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "CEEFA429004AD2F8079A01B4BA21F365D125A149" : 0,
+    "B9B76EE0396E6375A87FCCD582658F685DE2FFA4" : 0,
     "DD20A1A48C66B5213E0FEBB87A95EF51D6C6F3E8" : 0,
-    "9E1ECC80773D1F4F22D03CB4DEA298B3CB57FAF5" : 0,
-    "CEEFA429004AD2F8079A01B4BA21F365D125A149" : 0
+    "9E1ECC80773D1F4F22D03CB4DEA298B3CB57FAF5" : 0
   },
   "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "6E00496D-CABD-45F1-9316-49309CEC2759",
   "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "CEEFA429004AD2F8079A01B4BA21F365D125A149" : "AppleMocks",
+    "B9B76EE0396E6375A87FCCD582658F685DE2FFA4" : "AppleMocks\/AppleMocks\/Lib\/UI\/TextFieldValidator\/",
     "DD20A1A48C66B5213E0FEBB87A95EF51D6C6F3E8" : "AppleMocks\/AppleMocks\/Lib\/Networking\/AFNetworking",
-    "9E1ECC80773D1F4F22D03CB4DEA298B3CB57FAF5" : "AppleMocks\/AppleMocks\/Lib\/UI\/SVProgressHUD",
-    "CEEFA429004AD2F8079A01B4BA21F365D125A149" : "AppleMocks"
+    "9E1ECC80773D1F4F22D03CB4DEA298B3CB57FAF5" : "AppleMocks\/AppleMocks\/Lib\/UI\/SVProgressHUD"
   },
   "DVTSourceControlWorkspaceBlueprintNameKey" : "AppleMocks",
   "DVTSourceControlWorkspaceBlueprintVersion" : 203,
@@ -22,6 +24,11 @@
       "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/TransitApp\/SVProgressHUD.git",
       "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
       "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "9E1ECC80773D1F4F22D03CB4DEA298B3CB57FAF5"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/dhawaldawar\/TextFieldValidator.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "B9B76EE0396E6375A87FCCD582658F685DE2FFA4"
     },
     {
       "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "github.com:tejaswiyvs\/AppleMocks.git",

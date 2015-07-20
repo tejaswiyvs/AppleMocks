@@ -58,6 +58,10 @@
 		B78A10D91B583210002BF90C /* CustomerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B78A10D71B583210002BF90C /* CustomerView.xib */; };
 		B78A10DC1B583A4A002BF90C /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = B78A10DB1B583A4A002BF90C /* SwiftyJSON.swift */; };
 		B78A10DD1B583A4A002BF90C /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = B78A10DB1B583A4A002BF90C /* SwiftyJSON.swift */; };
+		B7BDF7A41B5D469800D5F564 /* UIScrollView+InfiniteScroll.m in Sources */ = {isa = PBXBuildFile; fileRef = B7BDF7A31B5D469800D5F564 /* UIScrollView+InfiniteScroll.m */; };
+		B7BDF7A51B5D469800D5F564 /* UIScrollView+InfiniteScroll.m in Sources */ = {isa = PBXBuildFile; fileRef = B7BDF7A31B5D469800D5F564 /* UIScrollView+InfiniteScroll.m */; };
+		B7BDF7A91B5D4DA400D5F564 /* CustomInfiniteIndicator.m in Sources */ = {isa = PBXBuildFile; fileRef = B7BDF7A81B5D4DA400D5F564 /* CustomInfiniteIndicator.m */; };
+		B7BDF7AA1B5D4DA400D5F564 /* CustomInfiniteIndicator.m in Sources */ = {isa = PBXBuildFile; fileRef = B7BDF7A81B5D4DA400D5F564 /* CustomInfiniteIndicator.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -117,6 +121,10 @@
 		B78A10D11B5831FB002BF90C /* CustomerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CustomerViewController.swift; path = Controllers/CustomerViewController.swift; sourceTree = "<group>"; };
 		B78A10D71B583210002BF90C /* CustomerView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CustomerView.xib; path = Views/CustomerView.xib; sourceTree = "<group>"; };
 		B78A10DB1B583A4A002BF90C /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SwiftyJSON.swift; path = Lib/Networking/SwiftyJSON/SwiftyJSON.swift; sourceTree = "<group>"; };
+		B7BDF7A21B5D469800D5F564 /* UIScrollView+InfiniteScroll.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIScrollView+InfiniteScroll.h"; path = "Lib/UI/Categories/UIScrollView+InfiniteScroll.h"; sourceTree = "<group>"; };
+		B7BDF7A31B5D469800D5F564 /* UIScrollView+InfiniteScroll.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIScrollView+InfiniteScroll.m"; path = "Lib/UI/Categories/UIScrollView+InfiniteScroll.m"; sourceTree = "<group>"; };
+		B7BDF7A71B5D4DA400D5F564 /* CustomInfiniteIndicator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CustomInfiniteIndicator.h; path = "Lib/UI/Loading View/CustomInfiniteIndicator.h"; sourceTree = "<group>"; };
+		B7BDF7A81B5D4DA400D5F564 /* CustomInfiniteIndicator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CustomInfiniteIndicator.m; path = "Lib/UI/Loading View/CustomInfiniteIndicator.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -235,6 +243,7 @@
 		B73DCF3B1B57002000D23698 /* Lib */ = {
 			isa = PBXGroup;
 			children = (
+				B7BDF7A11B5D468F00D5F564 /* Categories */,
 				B78A10BE1B580C11002BF90C /* UI */,
 				B73DCF411B57007700D23698 /* Networking */,
 				B73DCF401B57007300D23698 /* Helpers */,
@@ -299,6 +308,7 @@
 		B78A10BE1B580C11002BF90C /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				B7BDF7A61B5D4D9E00D5F564 /* Loading Indicator */,
 				B705E2201B594BA100037943 /* TextFieldValidator */,
 				B78A10BF1B580C33002BF90C /* SVProgressHUD */,
 			);
@@ -323,6 +333,24 @@
 				B78A10DB1B583A4A002BF90C /* SwiftyJSON.swift */,
 			);
 			name = JSON;
+			sourceTree = "<group>";
+		};
+		B7BDF7A11B5D468F00D5F564 /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				B7BDF7A21B5D469800D5F564 /* UIScrollView+InfiniteScroll.h */,
+				B7BDF7A31B5D469800D5F564 /* UIScrollView+InfiniteScroll.m */,
+			);
+			name = Categories;
+			sourceTree = "<group>";
+		};
+		B7BDF7A61B5D4D9E00D5F564 /* Loading Indicator */ = {
+			isa = PBXGroup;
+			children = (
+				B7BDF7A71B5D4DA400D5F564 /* CustomInfiniteIndicator.h */,
+				B7BDF7A81B5D4DA400D5F564 /* CustomInfiniteIndicator.m */,
+			);
+			name = "Loading Indicator";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -443,9 +471,11 @@
 				B705E21E1B594ABB00037943 /* Helper.swift in Sources */,
 				B78A10DC1B583A4A002BF90C /* SwiftyJSON.swift in Sources */,
 				B78A109F1B57FF5C002BF90C /* AFHTTPSessionManager.m in Sources */,
+				B7BDF7A41B5D469800D5F564 /* UIScrollView+InfiniteScroll.m in Sources */,
 				B78A10BC1B5808E4002BF90C /* CustomerListViewController.swift in Sources */,
 				B78A10A31B57FF5C002BF90C /* AFURLRequestSerialization.m in Sources */,
 				B73DCF4E1B57036400D23698 /* CustomerRequests.swift in Sources */,
+				B7BDF7A91B5D4DA400D5F564 /* CustomInfiniteIndicator.m in Sources */,
 				B73DCF1A1B56FF9900D23698 /* AppDelegate.swift in Sources */,
 				B78A10D31B5831FB002BF90C /* CustomerViewController.swift in Sources */,
 				B78A10C51B580C46002BF90C /* SVIndefiniteAnimatedView.m in Sources */,
@@ -471,9 +501,11 @@
 				B705E21F1B594ABB00037943 /* Helper.swift in Sources */,
 				B78A10DD1B583A4A002BF90C /* SwiftyJSON.swift in Sources */,
 				B78A10B21B58014F002BF90C /* AFURLConnectionOperation.m in Sources */,
+				B7BDF7A51B5D469800D5F564 /* UIScrollView+InfiniteScroll.m in Sources */,
 				B78A10B41B58014F002BF90C /* AFURLRequestSerialization.m in Sources */,
 				B78A10B61B58014F002BF90C /* AFURLResponseSerialization.m in Sources */,
 				B78A10B81B58014F002BF90C /* AFURLSessionManager.m in Sources */,
+				B7BDF7AA1B5D4DA400D5F564 /* CustomInfiniteIndicator.m in Sources */,
 				B78A10BA1B58014F002BF90C /* DashboardViewController.swift in Sources */,
 				B78A10D41B5831FB002BF90C /* CustomerViewController.swift in Sources */,
 				B78A10C61B580C46002BF90C /* SVIndefiniteAnimatedView.m in Sources */,

@@ -83,8 +83,19 @@ class UpdateCustomerRequest : BaseRequest {
 }
 
 class GetCustomersRequest : BaseRequest {
+    var pageNumber: Int
+    var pageSize: Int
+    
+    init(pageNumber: Int, pageSize: Int, success: SuccessBlock?, failure: FailureBlock?) {
+        self.pageNumber = pageNumber
+        self.pageSize = pageSize
+        super.init(success: success, failure: failure)
+    }
+    
     override func relativeUrl() -> String? {
-        return "Customers";
+        let skip = String(pageNumber * pageSize)
+        let pageSizeStr = String(pageSize)
+        return "Customers?$top=" + pageSizeStr + "&$skip=" + skip;
     }
     
     override func body() -> NSData? {

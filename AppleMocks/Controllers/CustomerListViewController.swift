@@ -16,6 +16,8 @@ class CustomerListViewController: UITableViewController {
     var spinner = SVProgressHUD()
     var getCustomersRequest: GetCustomersRequest?
     var deleteCustomersRequest: DeleteCustomerRequest?
+    var currentPageNumer: Int?
+    let defaultPageSize = 20
     
     init() {
         super.init(style: UITableViewStyle.Plain)
@@ -34,13 +36,19 @@ class CustomerListViewController: UITableViewController {
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Add, target: self, action: Selector("addButtonClicked:"))
         self.title = "Customers"
         self.tableView.contentInset = UIEdgeInsetsZero
+        self.tableView.infiniteScrollIndicatorView = CustomInfiniteIndicator(frame: CGRectMake(0.0, 0.0, 24.0, 24.0))
+        self.tableView.addInfiniteScrollWithHandler { [unowned self](tableView) -> Void in
+            self.currentPageNumer!++
+            self.fetchCurrentPage(nil)
+            self.tableView.finishInfiniteScroll()
+        }
         self.configurePullToRefresh()
+        self.currentPageNumer = 0
     }
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        self.triggerRefreshControl()
-        self.fetchData(nil)
+        self.fetchCurrentPage(nil)
     }
         
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -118,7 +126,7 @@ class CustomerListViewController: UITableViewController {
     
     func configurePullToRefresh() {
         self.refreshControl = UIRefreshControl()
-        self.refreshControl?.addTarget(self, action: Selector("fetchData:"), forControlEvents: UIControlEvents.ValueChanged)
+        self.refreshControl?.addTarget(self, action: Selector("fetchCurrentPage:"), forControlEvents: UIControlEvents.ValueChanged)
     }
         
     func pushCustomerInfoScreen(customer: Customer?) {
@@ -126,10 +134,16 @@ class CustomerListViewController: UITableViewController {
         self.navigationController?.pushViewController(customerInfo, animated: true)
     }
     
-    func fetchData(sender: AnyObject?) {
+    func fetchCurrentPage(sender: AnyObject?) {
         let success: BaseRequest.SuccessBlock = { [unowned self] (result: AnyObject?) -> (Void) in
             if let r:AnyObject = result {
-                self.customerList = r as? [Customer]
+                let customerList: [Customer]? = r as? [Customer]
+                if self.customerList == nil {
+                    self.customerList = [Customer]()
+                }
+                if let c = customerList {
+                    self.customerList! += c
+                }
             }
             self.tableView.reloadData()
             self.dismissRefreshControl()
@@ -139,8 +153,9 @@ class CustomerListViewController: UITableViewController {
             self.refreshControl?.endRefreshing()
             self.dismissRefreshControl()
         }
+        self.triggerRefreshControl()
         
-        self.getCustomersRequest = GetCustomersRequest(success: success, failure: failure);
+        self.getCustomersRequest = GetCustomersRequest(pageNumber: self.currentPageNumer!, pageSize: self.defaultPageSize, success: success, failure: failure);
         self.getCustomersRequest!.start()
     }
     
